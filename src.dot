@@ -1,0 +1,94 @@
+strict digraph "dependency-cruiser output"{
+    ordering="out" rankdir="LR" splines="true" overlap="false" nodesep="0.16" ranksep="0.18" fontname="Helvetica-bold" fontsize="9" style="rounded,bold,filled" fillcolor="#ffffff" compound="true"
+    node [shape="box" style="rounded, filled" height="0.2" color="black" fillcolor="#ffffcc" fontcolor="black" fontname="Helvetica" fontsize="9"]
+    edge [arrowhead="normal" arrowsize="0.6" penwidth="2.0" color="#00000033" fontname="Helvetica" fontsize="9"]
+
+    subgraph "cluster_src" {label="src" "src/api-actions.js" [label=<api-actions.js> tooltip="api-actions.js" URL="src/api-actions.js" ] }
+    "src/api-actions.js" -> "src/utils.js"
+    subgraph "cluster_src" {label="src" "src/apm.js" [label=<apm.js> tooltip="apm.js" URL="src/apm.js" ] }
+    "src/apm.js" -> "src/config.js"
+    "src/apm.js" -> "src/utils.js"
+    subgraph "cluster_src" {label="src" "src/autocapture-utils.js" [label=<autocapture-utils.js> tooltip="autocapture-utils.js" URL="src/autocapture-utils.js" ] }
+    "src/autocapture-utils.js" -> "src/utils.js"
+    subgraph "cluster_src" {label="src" "src/autocapture.js" [label=<autocapture.js> tooltip="autocapture.js" URL="src/autocapture.js" ] }
+    "src/autocapture.js" -> "src/autocapture-utils.js"
+    "src/autocapture.js" -> "src/extensions/rageclick.js"
+    "src/autocapture.js" -> "src/utils.js"
+    subgraph "cluster_src" {label="src" "src/base-request-queue.js" [label=<base-request-queue.js> tooltip="base-request-queue.js" URL="src/base-request-queue.js" ] }
+    subgraph "cluster_src" {label="src" "src/capture-metrics.js" [label=<capture-metrics.js> tooltip="capture-metrics.js" URL="src/capture-metrics.js" ] }
+    "src/capture-metrics.js" -> "src/utils.js"
+    subgraph "cluster_src" {label="src" "src/compression.js" [label=<compression.js> tooltip="compression.js" URL="src/compression.js" ] }
+    "src/compression.js" -> "src/lz-string.js"
+    "src/compression.js" -> "src/utils.js"
+    subgraph "cluster_src" {label="src" "src/config.js" [label=<config.js> tooltip="config.js" URL="src/config.js" ] }
+    subgraph "cluster_src" {label="src" "src/decide.js" [label=<decide.js> tooltip="decide.js" URL="src/decide.js" ] }
+    "src/decide.js" -> "src/autocapture.js"
+    "src/decide.js" -> "src/utils.js"
+    subgraph "cluster_src" {label="src" subgraph "cluster_src/extensions" {label="extensions" "src/extensions/rageclick.js" [label=<rageclick.js> tooltip="rageclick.js" URL="src/extensions/rageclick.js" ] } }
+    subgraph "cluster_src" {label="src" subgraph "cluster_src/extensions" {label="extensions" "src/extensions/sessionrecording-utils.js" [label=<sessionrecording-utils.js> tooltip="sessionrecording-utils.js" URL="src/extensions/sessionrecording-utils.js" ] } }
+    "src/extensions/sessionrecording-utils.js" -> "src/extensions/sessionrecording.js" [arrowhead="normalnoneodot"]
+    subgraph "cluster_src" {label="src" subgraph "cluster_src/extensions" {label="extensions" "src/extensions/sessionrecording.js" [label=<sessionrecording.js> tooltip="sessionrecording.js" URL="src/extensions/sessionrecording.js" ] } }
+    "src/extensions/sessionrecording.js" -> "src/autocapture-utils.js"
+    "src/extensions/sessionrecording.js" -> "src/config.js"
+    "src/extensions/sessionrecording.js" -> "src/posthog-persistence.js"
+    "src/extensions/sessionrecording.js" -> "src/utils.js"
+    "src/extensions/sessionrecording.js" -> "src/extensions/sessionrecording-utils.js" [arrowhead="normalnoneodot"]
+    subgraph "cluster_src" {label="src" subgraph "cluster_src/extensions" {label="extensions" "src/extensions/toolbar.js" [label=<toolbar.js> tooltip="toolbar.js" URL="src/extensions/toolbar.js" ] } }
+    "src/extensions/toolbar.js" -> "src/autocapture-utils.js"
+    "src/extensions/toolbar.js" -> "src/utils.js"
+    subgraph "cluster_src" {label="src" "src/gdpr-utils.js" [label=<gdpr-utils.js> tooltip="gdpr-utils.js" URL="src/gdpr-utils.js" ] }
+    "src/gdpr-utils.js" -> "src/storage.js"
+    "src/gdpr-utils.js" -> "src/utils.js"
+    subgraph "cluster_src" {label="src" "src/loader-globals.js" [label=<loader-globals.js> tooltip="loader-globals.js" URL="src/loader-globals.js" ] }
+    "src/loader-globals.js" -> "src/posthog-core.js"
+    subgraph "cluster_src" {label="src" "src/loader-module.js" [label=<loader-module.js> tooltip="loader-module.js" URL="src/loader-module.js" ] }
+    "src/loader-module.js" -> "src/posthog-core.js"
+    subgraph "cluster_src" {label="src" "src/lz-string.js" [label=<lz-string.js> tooltip="lz-string.js" URL="src/lz-string.js" ] }
+    subgraph "cluster_src" {label="src" "src/posthog-core.js" [label=<posthog-core.js> tooltip="posthog-core.js" URL="src/posthog-core.js" ] }
+    "src/posthog-core.js" -> "src/apm.js"
+    "src/posthog-core.js" -> "src/autocapture.js"
+    "src/posthog-core.js" -> "src/capture-metrics.js"
+    "src/posthog-core.js" -> "src/compression.js"
+    "src/posthog-core.js" -> "src/config.js"
+    "src/posthog-core.js" -> "src/decide.js"
+    "src/posthog-core.js" -> "src/extensions/sessionrecording.js"
+    "src/posthog-core.js" -> "src/extensions/toolbar.js"
+    "src/posthog-core.js" -> "src/gdpr-utils.js"
+    "src/posthog-core.js" -> "src/lz-string.js"
+    "src/posthog-core.js" -> "src/posthog-featureflags.js"
+    "src/posthog-core.js" -> "src/posthog-people.js"
+    "src/posthog-core.js" -> "src/posthog-persistence.js"
+    "src/posthog-core.js" -> "src/request-queue.js"
+    "src/posthog-core.js" -> "src/retry-queue.js"
+    "src/posthog-core.js" -> "src/send-request.js"
+    "src/posthog-core.js" -> "src/sessionid.js"
+    "src/posthog-core.js" -> "src/storage.js"
+    "src/posthog-core.js" -> "src/utils.js"
+    subgraph "cluster_src" {label="src" "src/posthog-featureflags.js" [label=<posthog-featureflags.js> tooltip="posthog-featureflags.js" URL="src/posthog-featureflags.js" ] }
+    "src/posthog-featureflags.js" -> "src/utils.js"
+    subgraph "cluster_src" {label="src" "src/posthog-people.js" [label=<posthog-people.js> tooltip="posthog-people.js" URL="src/posthog-people.js" ] }
+    "src/posthog-people.js" -> "src/api-actions.js"
+    "src/posthog-people.js" -> "src/gdpr-utils.js"
+    "src/posthog-people.js" -> "src/utils.js"
+    subgraph "cluster_src" {label="src" "src/posthog-persistence.js" [label=<posthog-persistence.js> tooltip="posthog-persistence.js" URL="src/posthog-persistence.js" ] }
+    "src/posthog-persistence.js" -> "src/storage.js"
+    "src/posthog-persistence.js" -> "src/utils.js"
+    subgraph "cluster_src" {label="src" "src/request-queue.js" [label=<request-queue.js> tooltip="request-queue.js" URL="src/request-queue.js" ] }
+    "src/request-queue.js" -> "src/base-request-queue.js"
+    "src/request-queue.js" -> "src/utils.js"
+    subgraph "cluster_src" {label="src" "src/retry-queue.js" [label=<retry-queue.js> tooltip="retry-queue.js" URL="src/retry-queue.js" ] }
+    "src/retry-queue.js" -> "src/base-request-queue.js"
+    "src/retry-queue.js" -> "src/send-request.js"
+    subgraph "cluster_src" {label="src" "src/send-request.js" [label=<send-request.js> tooltip="send-request.js" URL="src/send-request.js" ] }
+    "src/send-request.js" -> "src/config.js"
+    "src/send-request.js" -> "src/utils.js"
+    subgraph "cluster_src" {label="src" "src/sessionid.js" [label=<sessionid.js> tooltip="sessionid.js" URL="src/sessionid.js" ] }
+    "src/sessionid.js" -> "src/extensions/sessionrecording.js"
+    "src/sessionid.js" -> "src/posthog-persistence.js"
+    "src/sessionid.js" -> "src/storage.js"
+    "src/sessionid.js" -> "src/utils.js"
+    subgraph "cluster_src" {label="src" "src/storage.js" [label=<storage.js> tooltip="storage.js" URL="src/storage.js" ] }
+    "src/storage.js" -> "src/utils.js"
+    subgraph "cluster_src" {label="src" "src/utils.js" [label=<utils.js> tooltip="utils.js" URL="src/utils.js" ] }
+    "src/utils.js" -> "src/config.js"
+}
