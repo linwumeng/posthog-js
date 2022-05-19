@@ -1,3 +1,17 @@
+## 1.21.1 - 2022-05-13
+
+- chore(build): bumping to make release (#396)
+- chore(dep): update rrweb to 1.1.3 (#395)
+
+## 1.21.0 - 2022-05-11
+
+- fix(recordings): mask all input fields for recordings (#388)
+
+## 1.20.5 - 2022-05-10
+
+- feat: add recording url to sentry integration (#371)
+- fix(config): Case-insensitive persistence (#389)
+
 ## 1.20.4 - 2022-04-15
 
 - fix(console-logs): handle undefined and null log (#385)
